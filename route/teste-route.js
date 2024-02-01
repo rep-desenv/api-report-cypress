@@ -2,30 +2,47 @@ const express = require('express')
 const router = express.Router()
 const testeService = require('../service/teste-service')
 
-router.get('/teste', async (req, res, next) => {
-    // console.log('Entrei na primeira rota GET.')
-    // return res.json({mesage:'Entrei na rota correta GET!', status: 'ok'})
-    
+router.get('/teste', async function(req, res, next) {
     try {
-        const teste = await testeService.getPosts()
+        const teste = await testeService.getTestes()
         res.json(teste)
     } catch (err) {
         // res.status(500)
-        // res.json({error: er})
+        //res.json({error: err})
         next(err)
     }
 })
 
-router.post('/teste',(req, res)=>{
-    console.log('Entrei na primeira rota POST.')
-    return res.json({mesage:'Entrei na rota correta POST!', status: 'ok'})
+router.get('/teste/:id', async function(req, res, next) {
+    try {
+        const teste = await testeService.getTeste(req.params.id)
+        res.json(teste)
+    } catch (err) {
+        // res.status(500)
+        //res.json({error: err})
+        next(err)
+    }
+})
+
+router.post('/teste',async function(req, res, next) {    
+    const teste = req.body    
+    try {
+        const newTeste = await testeService.saveTeste(teste)
+        res.status(201).json(newTeste);
+    } catch (err) {        
+        next(err)
+    }
 })
 
 
-router.put('/teste',(req, res)=>{
-    console.log('Entrei na primeira rota PUT.')
-    return res.json({mesage:'Entrei na rota correta PUT!', status: 'ok'})
+router.put('/teste/:id',async function(req, res, next) {    
+    const teste = req.body   
+      try {
+        const newTeste = await testeService.updateTeste(req.params.id, teste)
+        res.status(204).end();
+    } catch (err) {        
+        next(err)
+    }
 })
-
 
 module.exports = router

@@ -25,7 +25,10 @@ exports.getTesteDesc = function( desc_teste ) {
 }
 
 exports.saveTeste = async function(teste){    
-    const insertRows = await database('teste').insert({ desc_teste: teste.desc_teste})
+    const insertRows = await database('teste')
+        .insert({ 
+            desc_teste: teste.desc_teste
+        })
 
     return insertRows
 }
@@ -40,7 +43,6 @@ exports.updateTeste = async function(id, teste){
 
     return upd
 }
-
 
 exports.deleteTeste = async function(id){
     const del = await database('teste')

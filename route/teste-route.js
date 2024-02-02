@@ -5,7 +5,8 @@ const testeService = require('../service/teste-service')
 router.get('/teste', async function(req, res, next) {
     try {
         const teste = await testeService.getTestes()
-        res.json(teste)
+        res.status(200).json(teste);
+        //res.json(teste)
     } catch (err) {
         // res.status(500)
         //res.json({error: err})
@@ -16,7 +17,8 @@ router.get('/teste', async function(req, res, next) {
 router.get('/teste/:id', async function(req, res, next) {
     try {
         const teste = await testeService.getTeste(req.params.id)
-        res.json(teste)
+        res.status(200).json(teste);
+        //res.json(teste)
     } catch (err) {
         // res.status(500)
         //res.json({error: err})
@@ -44,5 +46,17 @@ router.put('/teste/:id',async function(req, res, next) {
         next(err)
     }
 })
+
+
+router.delete('/teste/:id',async function(req, res, next) {    
+    // const teste = req.body   
+    try {
+        const newTeste = await testeService.deleteTeste(req.params.id)
+        res.status(204).end();
+    } catch (err) {        
+        next(err)
+    }
+})
+
 
 module.exports = router

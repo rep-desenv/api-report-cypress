@@ -26,3 +26,53 @@ Alguns status code muito utilizados:
 502 - Bad Gateway
 503 - Service Unavailable
 504 - Gateway Timeout
+
+*200	OK	            A solicitação foi bem-sucedida
+*201	Created	        Um novo recurso foi criado como resultado da solicitação
+204	    No Content	    A solicitação foi bem-sucedida, mas não há conteúdo para retornar
+
+*400	Bad Request	    A solicitação foi mal formatada ou inválida
+401	    Unauthorized	O cliente precisa se autenticar para obter a resposta solicitada
+403	    Forbidden	    O cliente não tem permissão para acessar o recurso solicitado
+*404	Not Found	    O recurso solicitado não foi encontrado
+
+201	    Created	            Um recurso é criado
+202	    Accepted	        Uma requisição foi aceita para processamento, mas não foi concluída
+203	    Non-Authoritative   Information	Informação retornada, mas de uma fonte não confiável
+204	    No Content	        A solicitação foi concluída com sucesso, mas não há nenhum conteúdo a retornar
+205	    Reset Content	    A solicitação foi concluída com sucesso, mas o navegador deve limpar a tela
+206	    Partial Content	    A solicitação foi atendida parcialmente
+
+300	    Multiple Choices	Múltiplas opções disponíveis
+301	    Moved Permanently	O recurso solicitado foi movido permanentemente
+302	    Found	            O recurso solicitado foi encontrado temporariamente em outro lugar
+303	    See Other	        O recurso solicitado está em outro lugar
+304	    Not Modified	    O recurso solicitado não foi modificado desde a última solicitação
+305	    Use Proxy	        O recurso solicitado deve ser acessado através de um proxy
+307	    Temporary Redirect	O recurso solicitado foi movido temporariamente para outro lugar
+
+400	    Bad Request	        A solicitação foi inválida ou mal formatada
+*401	Unauthorized	    O cliente não forneceu credenciais válidas
+*402	Payment Required	Pagamento é necessário para acessar este recurso
+403	    Forbidden	        O cliente não tem permissão para acessar o recurso solicitado
+*404	Not Found	        O recurso solicitado não foi encontrado
+405	    Method Not Allowed	O método HTTP usado na solicitação não é permitido para o recurso solicitado
+406	    Not Acceptable	    O recurso solicitado não pode ser retornado no formato aceito pelo cliente
+407	    Proxy Authentication Required	O cliente deve se autenticar com o proxy antes de continuar
+408	    Request Timeout	    O tempo limite para a solicitação foi excedido
+409	    Conflict	        Houve uma conflito ao processar a solicitação
+410	    Gone	            O recurso solicitado foi removido permanentemente
+411	    Length Required	    O comprimento do corpo da solicitação é necessário
+412	    Precondition Failed	        Uma ou mais condições da solicitação falharam
+413	    Request Entity Too Large	A entidade da solicitação é muito grande
+414	    Request-URI Too Long	    A URI da solicitação é muito longa
+415	    Unsupported Media Type	    O tipo de mídia da solicitação não é suportado
+416	    Requested Range Not         Satisfiable	O intervalo solicitado não pode ser atendido
+417	    Expectation Failed	        A expectativa da solicitação falhou
+
+500	    Internal Server Error	    Ocorreu um erro interno no servidor
+*501	Not Implemented	            A solicitação não pode ser atendida pelo servidor
+502	    Bad Gateway	                O servidor está atuando como gateway e recebeu uma resposta inválida
+503	    Service Unavailable	        O servidor está temporariamente indisponível
+504	    Gateway Timeout	            O servidor está atuando como gateway e não recebeu uma resposta a tempo
+505	    HTTP Version Not Supported	A versão do HTTP usada na solicitação não é suportada pelo servidor

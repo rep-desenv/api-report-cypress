@@ -35,7 +35,14 @@ exports.saveTeste = async function(teste) {
 exports.updateTeste = async function(id, teste){
     const existingTeste = await testeData.getTesteDesc(teste.desc_teste)    
     if (existingTeste.length > 0) throw new Error("Post already exists")
-    
+
     await exports.getTeste(id)
     return testeData.updateTeste(id, teste)
+}
+
+exports.deleteTeste = async function (id) {
+    const existingTeste = await testeData.getTeste(id)
+    if (existingTeste.length == 0) throw new Error("Item not found")
+
+    return testeData.deleteTeste(id)
 }

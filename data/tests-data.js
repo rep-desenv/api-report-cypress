@@ -3,9 +3,9 @@ const database = require('../infra/database')
 
 exports.getTests = function() {
     return database.raw('select * from tests')
-    .then(function(resp){
-        return reps[0]
-    })
+        .then(function(resp){            
+            return resp[0]
+        })
 }
 
 exports.getTest = function(id){
@@ -15,7 +15,14 @@ exports.getTest = function(id){
         })
 }
 
-exports.postTest = async function(test){
+exports.getTestsDesc = function( test_name ){
+    return database.raw('select * from tests where desc_test =?',[test_name])
+        .then(function(resp){
+            return resp[0]
+        })
+}
+
+exports.postTest = async function(test){    
     const insertRow = await database('tests')
         .insert({
             state: test.state,
@@ -28,9 +35,9 @@ exports.postTest = async function(test){
     return insertRow
 }
 
-exports.putTest = async function(id, test){
+exports.putTest = async function(id, test){    
     const updateRow = await database('tests')
-        .where('id',id)
+        .where('id', id)
         .update({
             state: test.state,
             display_error: test.display_error,

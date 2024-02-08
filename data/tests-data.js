@@ -22,7 +22,7 @@ exports.getTestsDesc = function( test_name ){
         })
 }
 
-exports.postTest = async function(test){    
+exports.postTest = async function(test){     
     const insertRow = await database('tests')
         .insert({
             state: test.state,

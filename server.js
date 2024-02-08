@@ -8,6 +8,9 @@ app.use('/',
     require('./route/teste-route.js')
     ,require('./route/outra-route.js')
 	,require('./route/tests-route.js')
+	,require('./route/stats-route.js')
+	,require('./route/detail-route.js')
+	,require('./route/reporter-route.js')
 )
 
 app.use(function (error, req, res, next) {

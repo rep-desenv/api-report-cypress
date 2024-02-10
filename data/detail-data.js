@@ -21,7 +21,8 @@ exports.postDetail = async function(detail){
         .insert({
             file_name: detail.file_name,
             created_at: detail.created_at,
-            absolute_path: detail.absolute_path
+            absolute_path: detail.absolute_path,
+            id_exec: detail.id_exec
         })
 
     return insertRow
@@ -33,7 +34,8 @@ exports.putDetail = async function(id, detail){
         .update({
             file_name: detail.file_name,
             created_at: detail.created_at,
-            absolute_path: detail.absolute_path
+            absolute_path: detail.absolute_path,
+            status_process: detail.status_process
         })
 
     return updateRow

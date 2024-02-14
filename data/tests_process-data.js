@@ -15,6 +15,13 @@ exports.getTestsProcess = function(id){
         })
 }
 
+exports.getTestsProcessIdExec = function(idExec){
+    return database.raw("select * from tests_process where id_exec=?",[idExec])
+        .then(function(resp){            
+            return resp[0]
+        })
+}
+
 exports.postTestsProcess = async function(testProcess){    
     const insertRow = await database('tests_process')
         .insert({
@@ -27,23 +34,16 @@ exports.postTestsProcess = async function(testProcess){
     return insertRow
 }
 
-// exports.putTestsProcess = async function(idExec, testProcess){    
-//     const updateRow = await database('tests_process')
-//         .where('id_exec', [`'${idExec}'`])
-//         .update({
-//             status_process: testProcess.status_process
-//         })
-
-//     return updateRow
-// }
-
-exports.putTestsProcess = async function(idExec, testProcess){    
-    return await database.raw("update tests_process set status_process = 2323 where id_exec='3bea8192-30f9-4a6c-a899-93f34203fc5a'",[idExec])
-    .then(function(resp){            
-        return resp[0]
-    })
+exports.putTestsProcess = async function(id, testProcess){      
+    const updateRow = await database('tests_process')
+        .where('id_exec', id)
+        .where('file_name', testProcess.file_name)
+        .update({
+            status_process: testProcess.status_process
+        })
+    
+    return updateRow
 }
-
 
 exports.deleteTestsProcess = async function(id){
     const deleteRow = await database('tests_process')

@@ -15,9 +15,8 @@ exports.saveTestsProcess = async function (testeProcess){
     return testsProcessData.postTestsProcess(testeProcess)
 }
 
-exports.updateTestsProcess = async function(idExec, testProcess){
-    console.log('Service',testProcess, 'idExec', idExec)
-    const existingTestProcess = await testsProcessData.getTestsProcess(idExec)
+exports.updateTestsProcess = async function(idExec, testProcess){    
+    const existingTestProcess = await testsProcessData.getTestsProcessIdExec(idExec)
     if (existingTestProcess.length == 0) throw new Error("Item not found")
 
     return testsProcessData.putTestsProcess(idExec, testProcess)

@@ -12,6 +12,7 @@ app.use('/',
 	,require('./route/detail-route.js')
 	,require('./route/reporter-route.js')
 	,require('./route/tests_process-route.js')
+	,require('./route/exec-route.js')
 )
 
 app.use(function (error, req, res, next) {

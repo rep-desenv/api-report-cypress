@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 14, 2024 at 05:46 PM
+-- Generation Time: Feb 20, 2024 at 01:24 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `report_cypress`
 --
-CREATE DATABASE IF NOT EXISTS `report_cypress` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `report_cypress`;
 
 -- --------------------------------------------------------
 
@@ -29,7 +27,6 @@ USE `report_cypress`;
 -- Table structure for table `detail`
 --
 
-DROP TABLE IF EXISTS `detail`;
 CREATE TABLE `detail` (
   `id` int(11) NOT NULL,
   `file_name` varchar(200) NOT NULL,
@@ -42,10 +39,33 @@ CREATE TABLE `detail` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `exec`
+--
+
+CREATE TABLE `exec` (
+  `id` varchar(50) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `status_process` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exec_process`
+--
+
+CREATE TABLE `exec_process` (
+  `id` varchar(50) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `status_process` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `reporter`
 --
 
-DROP TABLE IF EXISTS `reporter`;
 CREATE TABLE `reporter` (
   `id` int(11) NOT NULL,
   `suites` int(11) NOT NULL,
@@ -65,7 +85,6 @@ CREATE TABLE `reporter` (
 -- Table structure for table `stats`
 --
 
-DROP TABLE IF EXISTS `stats`;
 CREATE TABLE `stats` (
   `id` int(11) NOT NULL,
   `duration` bigint(20) NOT NULL,
@@ -81,7 +100,6 @@ CREATE TABLE `stats` (
 -- Table structure for table `tests`
 --
 
-DROP TABLE IF EXISTS `tests`;
 CREATE TABLE `tests` (
   `id` int(11) NOT NULL,
   `state` varchar(300) NOT NULL,
@@ -97,7 +115,6 @@ CREATE TABLE `tests` (
 -- Table structure for table `tests_process`
 --
 
-DROP TABLE IF EXISTS `tests_process`;
 CREATE TABLE `tests_process` (
   `id` int(37) NOT NULL,
   `file_name` varchar(300) NOT NULL,
@@ -115,6 +132,12 @@ CREATE TABLE `tests_process` (
 -- Indexes for table `detail`
 --
 ALTER TABLE `detail`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `exec`
+--
+ALTER TABLE `exec`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -150,31 +173,31 @@ ALTER TABLE `tests_process`
 -- AUTO_INCREMENT for table `detail`
 --
 ALTER TABLE `detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `reporter`
 --
 ALTER TABLE `reporter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `stats`
 --
 ALTER TABLE `stats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tests`
 --
 ALTER TABLE `tests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1124;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tests_process`
 --
 ALTER TABLE `tests_process`
-  MODIFY `id` int(37) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
+  MODIFY `id` int(37) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

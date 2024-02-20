@@ -5,7 +5,10 @@ exports.getTestsProcesses = function(){
     return testsProcessData.getTestsProcesses()
 }
 
-exports.getTestsProcess = async function(id){    
+exports.getTestsProcess = async function(id){ 
+    if (id.toLowerCase() === 'p'){
+        return testsProcessData.showPainel()
+    }   
     const testProcess = await testsProcessData.getTestsProcess(id)
     if(testProcess.length == 0 ) throw new Error("Item not found")
     return testProcess

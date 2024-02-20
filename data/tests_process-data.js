@@ -15,6 +15,14 @@ exports.getTestsProcess = function(id){
         })
 }
 
+exports.showPainel = function(){
+    //return database.raw('select p.* from exec b, tests_process p where b.id = p.id_exec and b.created_at = ( select max(created_at) from exec a ) order by p.file_name')
+    return database.raw('select p.* from exec b, tests_process p where b.id = p.id_exec order by p.file_name')
+        .then(function(resp){            
+            return resp[0]
+        })
+}
+
 exports.getTestsProcessIdExec = function(idExec){
     return database.raw("select * from tests_process where id_exec=?",[idExec])
         .then(function(resp){            
